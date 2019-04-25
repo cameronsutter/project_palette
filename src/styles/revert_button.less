@@ -1,0 +1,18 @@
+@import './vars.less';
+
+.revert-button {
+  display: inline;
+  cursor: pointer;
+  vertical-align: sub;
+}
+
+.icon-refresh {
+  height: 25px;
+  width: 25px;
+  .primary {
+    .variable(fill, --primary-8, @primary-8);
+  }
+  .secondary {
+    .variable(fill, --primary-3, @primary-3);
+  }
+}

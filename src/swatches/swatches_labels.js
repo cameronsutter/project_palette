@@ -1,0 +1,37 @@
+export default { 
+  neutrals: {
+    'blue_grey': 'Blue Grey',
+    'cool_grey': 'Cool Grey',
+    'grey': 'Grey',
+    'warm_grey': 'Warm Grey',
+  },
+
+  primaries: {
+    'red': 'Red',
+    'red_vivid': 'Red (Vivid)',
+    'orange': 'Orange',
+    'orange_vivid': 'Orange (Vivid)',
+    'yellow': 'Yellow',
+    'yellow_vivid': 'Yellow (Vivid)',
+    'lime_green': 'Lime Green',
+    'lime_green_vivid': 'Lime Green (Vivid)',
+    'green': 'Green',
+    'green_vivid': 'Green (Vivid)',
+    'teal': 'Teal',
+    'teal_vivid': 'Teal (Vivid)',
+    'cyan': 'Cyan',
+    'cyan_vivid': 'Cyan (Vivid)',
+    'light_blue': 'Light Blue',
+    'light_blue_vivid': 'Light Blue (Vivid)',
+    'blue': 'Blue',
+    'blue_vivid': 'Blue (Vivid)',
+    'indigo': 'Indigo',
+    'indigo_vivid': 'Indigo (Vivid)',
+    'purple': 'Purple',
+    'purple_vivid': 'Purple (Vivid)',
+    'magenta': 'Magenta',
+    'magenta_vivid': 'Magenta (Vivid)',
+    'pink': 'Pink',
+    'pink_vivid': 'Pink (Vivid)',
+  }
+}

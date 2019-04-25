@@ -1,0 +1,24 @@
+@import './vars.less';
+
+.color-swatches {
+  display: flex;
+  // width: 80%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  & > div {
+    flex-grow: 1;
+    width: 50%;
+  }
+
+  // & > div:first-child {
+  //   .variable(margin-right, --spacing-9, @spacing-9);
+  // }
+
+}
+
+@media only screen and (max-width: 775px) {
+  .color-swatches {
+    flex-direction: column;
+  }
+}

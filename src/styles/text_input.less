@@ -1,0 +1,16 @@
+@import './vars.less';
+
+.text-input__container {
+  display: inline;
+}
+
+.text-input {
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  .variable(font-size, --font-2, @font-2);
+  .variable(color, --neutral-0, @neutral-0);
+
+  &:focus {
+    outline: 1px solid @neutral-7;
+  }
+}

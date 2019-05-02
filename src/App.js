@@ -3,6 +3,7 @@ import ColorPalette from './components/color_palette'
 import TextPalette from './components/text_palette'
 import SpacingPalette from './components/spacing_palette'
 import CustomProperties from 'react-custom-properties'
+import Icon from './components/icon'
 import './styles/App.less'
 import defaultVars from './defaults'
 import html2pdf from 'html2pdf.js'
@@ -41,21 +42,32 @@ export default function App() {
 
   return (
     <CustomProperties properties={vals}>
-      <div className='app-body'>
-        <h1>Project Palette</h1>
-        <div id='palettes' className='palettes'>
-          <ColorPalette vals={vals} setColors={setValues}/>
-          <div className='palette__container'>
-            <TextPalette vals={vals} setFonts={setValues}/>
-            <SpacingPalette vals={vals} setSpacings={setValues}/>
-          </div>
-          <div className='palette__container' data-html2canvas-ignore>
-            <button onClick={download} className='download'>Download this Project Palette</button>
+      <div className="off-canvas off-canvas-sidebar-show">
+        <a className="off-canvas-toggle btn btn-action" href="#the-sidebar">
+          <Icon icon='menu'/>
+        </a>
+
+        <div id="the-sidebar" className="off-canvas-sidebar">
+          <h1>Project Palette</h1>
+          <p>Inspired by the work of <a href="https://refactoringui.com/book">Refactoring UI</a></p>
+          <p>Visually define your next project&apos;s palette with this simple tool</p>
+          <button onClick={download} className='btn btn-primary btn-lg'><Icon icon='download'/> Download Palette</button>
+          <div className='attribution'>
+            <p>Made by the creator of </p><div><a href="http://www.plotmynovel.com"><img width="75" src="http://www.plotmynovel.com/images/plottr_logo.png"/></a></div>
           </div>
         </div>
-      </div>
-      <div className='footer'>
-        Made by the creator of <div><a href="http://www.plotmynovel.com"><img width="75" src="http://www.plotmynovel.com/images/plottr_logo.png"/></a></div>
+
+        <a className="off-canvas-overlay" href="#close"></a>
+
+        <div className="off-canvas-content">
+          <div id='palettes' className='palettes'>
+            <ColorPalette vals={vals} setColors={setValues}/>
+            <div className='palette__container'>
+              <TextPalette vals={vals} setFonts={setValues}/>
+              <SpacingPalette vals={vals} setSpacings={setValues}/>
+            </div>
+          </div>
+        </div>
       </div>
     </CustomProperties>
   )

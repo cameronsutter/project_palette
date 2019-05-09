@@ -60,6 +60,7 @@ export default function App() {
           <p>Inspired by the work of <a href="https://refactoringui.com/book">Refactoring UI</a></p>
           <p>Visually define your next project&apos;s palette with this simple tool</p>
           <button onClick={download} className='btn btn-primary btn-lg'><Icon icon='download'/> Download Palette</button>
+          <p className='donate'>Consider donating <a className='btn btn-sm' target="_blank" href='https://paypal.me/clouiss?locale.x=en_US'>PayPal</a></p>
           <div className='attribution'>
             <p>Made by the creator of </p><div><a href="http://www.plotmynovel.com"><img width="75" src="http://www.plotmynovel.com/images/plottr_logo.png"/></a></div>
           </div>

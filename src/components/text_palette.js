@@ -17,17 +17,26 @@ export default function TextPalette(props) {
       newFonts[fontKey] = newVal
       setFonts(newFonts)
       props.setFonts(newFonts)
+
+      if (props.publishTextPalette) {
+        props.publishTextPalette(newFonts)
+      }
     }
+
   }
 
   function renderFonts () {
-    return Object.keys(fonts).map(f => {
+    let fontVals = fonts
+    if (props.forPrint && props.textPalette) {
+      fontVals = props.textPalette
+    }
+    return Object.keys(fontVals).map(f => {
       return <div key={f}>
         <TextInput 
           valueKey={f}
-          value={fonts[f]} size={6}
+          value={fontVals[f]} size={6}
           onChange={changeFont}
-          style={{fontSize: fonts[f]}}
+          style={{fontSize: fontVals[f]}}
         />
       </div>
     })

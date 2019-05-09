@@ -17,16 +17,24 @@ export default function SpacingPalette(props) {
       newSpacings[spacingKey] = newVal
       setSpacings(newSpacings)
       props.setSpacings(newSpacings)
+
+      if (props.publishSpacingPalette) {
+        props.publishSpacingPalette(newSpacings)
+      }
     }
   }
 
   function renderSpacings () {
-    return Object.keys(spacings).map(s => {
+    let spacingsVals = spacings
+    if (props.forPrint && props.spacingPalette) {
+      spacingsVals = props.spacingPalette
+    }
+    return Object.keys(spacingsVals).map(s => {
       return <div key={s} className='spacing__item'>
-        <div className='spacing' style={{width: spacings[s]}}></div>
+        <div className='spacing' style={{width: spacingsVals[s]}}></div>
         <TextInput 
           valueKey={s}
-          value={spacings[s]} size={6}
+          value={spacingsVals[s]} size={6}
           onChange={changeSpacing}
           style={{}}
         />

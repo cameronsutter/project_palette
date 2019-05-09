@@ -1,0 +1,78 @@
+.forPrint {
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 40px;
+  padding-bottom: 0;
+
+  h2 {
+    margin-top: 2px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .inline-h3-wrapper {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+
+    .swatch-select {
+      margin-left: 0;
+      width: 150px;
+
+      .swatch-select__value-container {
+        height: 45px;
+      }
+
+      .swatch-select__control {
+        border: none;
+      }
+
+      .swatch-select__placeholder {
+        height: 25px;
+        line-height: 25px;
+      }
+
+      .swatch-select__indicators {
+        display: none;
+      }
+    }
+  }
+
+  .palette__container {
+    margin-top: 50px;
+    margin-bottom: 0;
+
+    h2 {
+      text-align: left;
+    }
+  }
+
+  .color-swatches {
+    justify-content: normal;
+    margin-top: 50px;
+
+    & > div {
+      width: auto;
+      flex-grow: 0;
+      margin-right: 30px;
+    }
+  }
+
+  .swatch_column {
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .swatch_item {
+    .text-input__container {
+      width: 125px;
+    }
+  }
+
+  .text-input__container {
+    .revert-button {
+      display: none;
+    }
+  }
+}

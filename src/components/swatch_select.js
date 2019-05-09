@@ -14,6 +14,7 @@ export default function SwatchSelect(props) {
 
   return <Select
     className='swatch-select'
+    classNamePrefix='swatch-select'
     defaultValue={props.selected}
     placeholder={placeholder}
     onChange={props.onChange}

@@ -18,6 +18,10 @@ export default function ColorPalette(props) {
       let key = `--${role}-${index}`
       props.setColors({[key]: value})
     }
+
+    if (props.publishColorPalette) {
+      props.publishColorPalette(currentSwatches)
+    }
   }
 
   function handleChangeSwatch (role, listKey) {
@@ -30,25 +34,48 @@ export default function ColorPalette(props) {
       }, {})
       props.setColors(newColors)
     }
+
+    if (props.publishColorPalette) {
+      props.publishColorPalette(currentSwatches)
+    }
   }
 
-  return (
-    <>
-      <h2>Color Palette</h2>
-      <div className='color-swatches'>
-        <Swatch title='Neutrals' role='neutral' swatchObj={currentSwatches['neutral']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
-        <Swatch title='Primary Color' role='primary' swatchObj={currentSwatches['primary']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
-      </div>
-      <div className='color-swatches'>
-        <Swatch title='Success' role='success' swatchObj={currentSwatches['success']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
-        <Swatch title='Error' role='error' swatchObj={currentSwatches['error']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
-      </div>
-      <div className='color-swatches'>
-        <Swatch title='Warning' role='warning' swatchObj={currentSwatches['warning']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
-        <Swatch title='Supporting' role='support' swatchObj={currentSwatches['support']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
-      </div>
-    </>
-  )
+  if (props.forPrint) {
+    let val = props.colorPalette || currentSwatches
+    return (
+      <>
+        <div className='color-swatches html2pdf__page-break'>
+          <Swatch title='Neutrals' role='neutral' swatchObj={val['neutral']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Primary Color' role='primary' swatchObj={val['primary']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Success' role='success' swatchObj={val['success']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+        </div>
+        <div className='color-swatches html2pdf__page-break'>
+          <Swatch title='Error' role='error' swatchObj={val['error']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Warning' role='warning' swatchObj={val['warning']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Supporting' role='support' swatchObj={val['support']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+        </div>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <h2>Color Palette</h2>
+        <div className='color-swatches'>
+          <Swatch title='Neutrals' role='neutral' swatchObj={currentSwatches['neutral']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Primary Color' role='primary' swatchObj={currentSwatches['primary']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+        </div>
+        <div className='color-swatches'>
+          <Swatch title='Success' role='success' swatchObj={currentSwatches['success']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Error' role='error' swatchObj={currentSwatches['error']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+        </div>
+        <div className='color-swatches'>
+          <Swatch title='Warning' role='warning' swatchObj={currentSwatches['warning']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+          <Swatch title='Supporting' role='support' swatchObj={currentSwatches['support']} changeSwatch={handleChangeSwatch} changeColor={handleChangeColor}/>
+        </div>
+      </>
+    )
+  }
+
 }
 
 // const MIDDLE_PRIMARY = '--primary-5'

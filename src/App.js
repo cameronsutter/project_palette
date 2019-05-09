@@ -5,6 +5,7 @@ import SpacingPalette from './components/spacing_palette'
 import CustomProperties from 'react-custom-properties'
 import Icon from './components/icon'
 import './styles/App.less'
+import './styles/print.less'
 import defaultVars from './defaults'
 import html2pdf from 'html2pdf.js'
 import printOptions from './util/printOptions'
@@ -16,6 +17,11 @@ export default function App() {
   let initialState = defaultVars
   if (localStorage.getItem(KEY)) initialState = JSON.parse(localStorage.getItem(KEY))
   const [vals, setVals] = useState(initialState)
+  const [hidden, setHidden] = useState(true)
+
+  const [colorPalette, publishColorPalette] = useState()
+  const [textPalette, publishTextPalette] = useState()
+  const [spacingPalette, publishSpacingPalette] = useState()
 
   useEffect(() => {
     document.body.style.color = vals[FIRST_NEUTRAL]
@@ -26,10 +32,12 @@ export default function App() {
   }, [vals])
 
   function download () {
-    let el = document.getElementById('palettes')
+    setHidden(false)
+    let el = document.getElementById('forPrint')
     let printer = html2pdf().from(el)
     printer.set(printOptions())
     printer.save('project_palette.pdf')
+    setTimeout(() => setHidden(true), 500)
   }
 
   function setValues (values) {
@@ -61,10 +69,18 @@ export default function App() {
 
         <div className="off-canvas-content">
           <div id='palettes' className='palettes'>
-            <ColorPalette vals={vals} setColors={setValues}/>
+            <ColorPalette vals={vals} setColors={setValues} publishColorPalette={publishColorPalette}/>
             <div className='palette__container'>
-              <TextPalette vals={vals} setFonts={setValues}/>
-              <SpacingPalette vals={vals} setSpacings={setValues}/>
+              <TextPalette vals={vals} setFonts={setValues} publishTextPalette={publishTextPalette}/>
+              <SpacingPalette vals={vals} setSpacings={setValues} publishSpacingPalette={publishSpacingPalette}/>
+            </div>
+          </div>
+          <div id='forPrint' className={`forPrint ${hidden ? 'hidden' : ''}`}>
+            <h2>Color Palette</h2>
+            <ColorPalette vals={vals} setColors={setValues} forPrint={true} colorPalette={colorPalette}/>
+            <div className='palette__container'>
+              <TextPalette vals={vals} setFonts={setValues} forPrint={true} textPalette={textPalette}/>
+              <SpacingPalette vals={vals} setSpacings={setValues} forPrint={true} spacingPalette={spacingPalette}/>
             </div>
           </div>
         </div>

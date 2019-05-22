@@ -62,7 +62,7 @@ export default function App() {
           <button onClick={download} className='btn btn-primary btn-lg'><Icon icon='download'/> Download Palette</button>
           <p className='donate'>Consider donating <a className='btn btn-sm' target="_blank" href='https://paypal.me/clouiss?locale.x=en_US'>PayPal</a></p>
           <div className='attribution'>
-            <p>Made by the creator of </p><div><a href="http://www.plotmynovel.com"><img width="75" src="http://www.plotmynovel.com/images/plottr_logo.png"/></a></div>
+            <p>Made by the creator of </p><div><a href="http://www.plotmynovel.com"><img width="75" src="http://www.plotmynovel.com/assets/img/plottr_logo_29_500w.png"/></a></div>
           </div>
         </div>
 

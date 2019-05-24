@@ -6,6 +6,7 @@ import swatches from '../swatches/swatches_list'
 
 export default function ColorPalette(props) {
   const [currentSwatches, dispatch] = useReducer(swatchesReducer, initialState())
+  if (props.publishColorPalette) props.publishColorPalette(currentSwatches)
 
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(currentSwatches))

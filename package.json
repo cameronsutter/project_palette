@@ -1,9 +1,9 @@
 {
-  "name": "reactHooks",
+  "name": "project_palette",
   "private": true,
-  "description": "A test in react hooks",
-  "version": "0.1.00",
-  "author": "camerons@qualtrics.com",
+  "description": "Build yourself a project palette with ease",
+  "version": "1.1.0",
+  "author": "cameronsutter0@gmail.com",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --mode=development",
     "start:hot": "NODE_ENV=development webpack-dev-server --mode=development --hot",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "downloadjs": "^1.4.7",
     "html2pdf.js": "^0.9.1",
     "lodash": "^4.17.11"
   },

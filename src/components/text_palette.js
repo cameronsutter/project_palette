@@ -6,6 +6,7 @@ import parseVars from '../util/parseVars'
 export default function TextPalette(props) {
   const defaults = parseVars('font', props.vals)
   const [fonts, setFonts] = useState(defaults)
+  if (props.publishTextPalette) props.publishTextPalette(fonts)
   
   function changeFont (fontKey, newVal) {
     if (!newVal || newVal == '') return

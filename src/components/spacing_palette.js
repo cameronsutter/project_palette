@@ -6,6 +6,7 @@ import parseVars from '../util/parseVars'
 
 export default function SpacingPalette(props) {
   const [spacings, setSpacings] = useState(parseVars('spacing', props.vals))
+  if (props.publishSpacingPalette) props.publishSpacingPalette(spacings)
     
   function changeSpacing (spacingKey, newVal) {
     if (!newVal || newVal == '') return

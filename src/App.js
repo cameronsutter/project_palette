@@ -9,6 +9,8 @@ import './styles/print.less'
 import defaultVars from './defaults'
 import html2pdf from 'html2pdf.js'
 import printOptions from './util/printOptions'
+import downloadFile from 'downloadjs'
+import makeCSSTemplate from './util/css_template'
 
 const FIRST_NEUTRAL = '--neutral-0'
 const KEY = 'defaultVars'
@@ -33,11 +35,19 @@ export default function App() {
 
   function download () {
     setHidden(false)
-    let el = document.getElementById('forPrint')
-    let printer = html2pdf().from(el)
-    printer.set(printOptions())
-    printer.save('project_palette.pdf')
-    setTimeout(() => setHidden(true), 500)
+    setTimeout(() => {
+      let el = document.getElementById('forPrint')
+      let printer = html2pdf().from(el)
+      printer.set(printOptions())
+      printer.save('project_palette.pdf')
+      setTimeout(() => setHidden(true), 500)
+    }, 1000)
+    downloadCSS()
+  }
+
+  function downloadCSS () {
+    let text = makeCSSTemplate(colorPalette, textPalette, spacingPalette)
+    downloadFile(text, 'project_palette.css', 'application/css')
   }
 
   function setValues (values) {

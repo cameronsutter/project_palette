@@ -34,9 +34,10 @@ export default {
   '--font-7': '36px',
   '--font-8': '48px',
   '--font-9': '60px',
-  '--font-99': '72px',
+  '--font-xl': '72px',
 
   // spacing
+  '--spacing-0': '2px',
   '--spacing-1': '4px',
   '--spacing-2': '8px',
   '--spacing-3': '12px',

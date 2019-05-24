@@ -1,6 +1,8 @@
 import swatches from '../swatches/swatches_list'
 import _ from 'lodash'
 
+export const swatchNames = ['neutral', 'primary', 'success', 'error', 'warning', 'support']
+
 export const KEY = 'currentSwatches'
 const defaultInitialState = {
   neutral: {

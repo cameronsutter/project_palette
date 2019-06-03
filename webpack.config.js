@@ -2,6 +2,7 @@ var fs = require('fs');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const prodMode = process.env.NODE_ENV === 'production';
 
@@ -55,7 +56,8 @@ const config = {
 	},
 	plugins: [
     new HtmlWebpackPlugin({ template: './index.html' }),
-		new CleanWebpackPlugin([distPath])
+		new CleanWebpackPlugin([distPath]),
+		new CopyWebpackPlugin([{from:'src/images',to:'images'}])
 	],
 	devServer: {
 		host: '0.0.0.0',
